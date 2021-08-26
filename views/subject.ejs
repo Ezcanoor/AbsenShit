@@ -1,0 +1,28 @@
+<%- include("partials/header.ejs", { title: "Subject"}) %>
+</head>
+<body>
+    <a href="/subject/add">Add Subject</a>
+    <table border="1">
+        <tr>
+            <th>Subject Name</th>
+            <th>LecturerID</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Action</th>
+        </tr>
+        <tbody>
+            <%data.forEach(subject => {%>
+                <tr>
+                    <td><%=subject.name%></td>
+                    <td><%=subject.lecturerId%></td>
+                    <td><%=subject.day%></td>
+                    <td><%=subject.time%></td>
+                    <td>
+                        <a href="/subject/edit/<%=subject.id%>">Edit</a>
+                        <a href="/subject/delete/<%=subject.id%>">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include("partials/footer.ejs")%></br>

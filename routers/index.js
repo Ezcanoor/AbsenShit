@@ -5,6 +5,8 @@ const authenticatedrouter = express.Router()
 const course = require('./course')
 const student = require('./student')
 const router = express.Router()
+const subjectRouter = require('./subjects.js')
+const lecturerRouter = require('./lecturer.js')
 
 router.get('/login', AuthController.index)
 router.post('/login', AuthController.login)
@@ -23,5 +25,7 @@ authenticatedrouter.get('/', (req, res)=> {
 })
 authenticatedrouter.use('/students', student)
 authenticatedrouter.use('/courses', course)
+router.use('/subject', subjectRouter)
+router.use('/lecturer', lecturerRouter)
 
 module.exports = authenticatedrouter
