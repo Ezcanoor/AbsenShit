@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Student extends Model {
     /**
@@ -24,5 +25,28 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Student',
   });
+
+  Student.addHook('beforeCreate', (student, options) => {
+    let name = student.name
+    name = name.toLowerCase()
+    name = name.split(' ')
+    name = name.map(el => {
+     return name = `${el[0].toUpperCase()}${el.slice(1)}`
+
+    })
+    student.name = name.join(' ')
+  })
+
+  Student.addHook('beforeCreate', (student, options) => {
+    let major = student.major
+    major = major.toLowerCase()
+    major = major.split(' ')
+    major = major.map(el => {
+     return major = `${el[0].toUpperCase()}${el.slice(1)}`
+
+    })
+    student.major = major.join(' ')
+  })
+  
   return Student;
 };
