@@ -7,6 +7,7 @@ const student = require('./student')
 const router = express.Router()
 const subjectRouter = require('./subjects.js')
 const lecturerRouter = require('./lecturer.js')
+const attendances = require('./attendances')
 
 router.get('/login', AuthController.index)
 router.post('/login', AuthController.login)
@@ -24,8 +25,9 @@ authenticatedrouter.get('/', (req, res)=> {
   res.send('ini home AbsenShit')
 })
 authenticatedrouter.use('/students', student)
-authenticatedrouter.use('/courses', course)
-router.use('/subject', subjectRouter)
-router.use('/lecturer', lecturerRouter)
+// authenticatedrouter.use('/courses', course)
+authenticatedrouter.use('/subject', subjectRouter)
+authenticatedrouter.use('/lecturer', lecturerRouter)
+
 
 module.exports = authenticatedrouter
