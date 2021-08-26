@@ -4,7 +4,6 @@ const AuthController = require('../controllers/authcontroller')
 const authenticatedrouter = express.Router()
 const course = require('./course')
 const student = require('./student')
-const login = require('./login')
 const router = express.Router()
 
 router.get('/login', AuthController.index)
