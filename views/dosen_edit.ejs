@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs", { title: "Edit Dosen"}) %>
+</head>
+<body>
+    <h1>Edit Dosen</h1>
+    <form method="POST" action="/dosen/edit/:id"> 
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value="<%= data.name%>"><br><br>
+        <label for="Tanggal_Lahir">Tanggal Lahir:</label><br>
+        <input type="date" id="Tanggal_Lahir" name="Tanggal_Lahir" value="<%= data.Tanggal_Lahir%>"><br><br>
+        <label for="email">E-mail:</label><br>
+        <input type="text" id="email" name="email" value="<%= data.email%>"><br><br>
+        <label>Gender</label><br/>
+        <input type="radio" name="gender" value="Male" <%= data.gender === 'Male' ? 'checked' : '' %>>
+        <label>Male</label>
+        <input type="radio" name="gender" value="Female" <%= data.gender === 'Female' ? 'checked' : '' %>>
+        <label>Female</label>
+        <button type="submit">Save</button>
+        <a href="/dosen">Cancel</a>
+    </form> 
+    <% errors.forEach(el => { %>
+        <p style="color: red;"><%= el %></p>
+    <% }) %>
+    <%- include("partials/footer.ejs")%></br>
