@@ -117,7 +117,7 @@ class Controller{
                 if (req.query.errors){
                     errors = req.query.errors.split(',')
                 }
-                res.render('Mata_Kuliah_edit', {data, errors})
+                res.render('Mata_Kuliah_edit', {data, dosen, errors})
             })
         })
         .catch(err => {
