@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs", { title: "Dosen"}) %>
+</head>
+<body>
+    <a href="/dosen/add">Tambahkan Dosen</a>
+    <table border="1">
+        <tr>
+            <th>Nama</th>
+            <th>Tanggal Lahir</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Action</th>
+        </tr>
+        <tbody>
+            <%data.forEach(dosen => {%>
+                <tr>
+                    <td><%=dosen.nama%></td>
+                    <td><%=dosen.Tanggal_Lahir%></td>
+                    <td><%=dosen.email%></td>
+                    <td><%=dosen.gender%></td>
+                    <td><a href="/dosen/edit/<%= dosen.id%>">Edit</a></td>
+                    <td><a href="/dosen/delete/<%= dosen.id%>">Delete</a></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include("partials/footer.ejs")%></br>

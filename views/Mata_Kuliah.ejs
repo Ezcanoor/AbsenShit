@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs", { title: "Mata Kuliah"}) %>
+</head>
+<body>
+    <a href="/Mata_Kuliah/add">Tambahkan Mata Kuliah</a>
+    <table border="1">
+        <tr>
+            <th>Nama Mata Kuliah</th>
+            <th>PengajarID</th>
+            <th>Hari</th>
+            <th>Jam</th>
+        </tr>
+        <tbody>
+            <%Mata_Kuliah.forEach(Matkul => {%>
+                <tr>
+                    <td><%=Matkul.nama%></td>
+                    <td><%=Matkul.PengajarID%></td>
+                    <td><%=Matkul.Hari%></td>
+                    <td><%=Matkul.Jam%></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include("partials/footer.ejs")%></br>

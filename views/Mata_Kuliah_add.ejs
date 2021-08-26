@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs", { title: "Add Mata Kuliah"}) %>
+</head>
+<body>
+    <h1>Add Mata Kuliah</h1>
+    <form method="POST" action="/Mata_Kuliah/add"> 
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="e.g: Ilmu Fisika Dasar"><br><br>
+        <label for="hari">Hari:</label><br>
+        <input type="text" id="hari" name="hari" placeholder="e.g: Selasa, Kamis, Jumat"><br><br>
+        <label for="jam">Jam:</label><br>
+        <input type="text" id="jam" name="jam" placeholder="e.g: 11.00-13.00 / 17.00-19.00"><br><br>
+        <label for="PengajarID">Pengajar:</label><br>
+        <select name="PengajarID" id="PengajarID">
+            <option selected disabled>--please select--</option>
+            <% dosen.forEach((dosen)=> { %>
+                <option value="<%=dosen.id%>"><%=dosen.name%></option>
+           <% })%>
+        </select><br><br>
+        <button type="submit">Save</button>
+        <a href="/Mata_Kuliah">Cancel</a>
+    </form> 
+    <% errors.forEach(el => { %>
+        <p style="color: red;"><%= el %></p>
+    <% }) %>
+    <%- include("partials/footer.ejs")%></br>
