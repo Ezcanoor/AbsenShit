@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs", { title: "Add Lecturer"}) %>
+</head>
+<body>
+    <h1>Add Lecturer</h1>
+    <form method="POST" action="/lecturer/add"> 
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="e.g: John Doe"><br><br>
+        <label for="birthDate">Birth Date:</label><br>
+        <input type="date" id="birthDate" name="birthDate"><br><br>
+        <label for="email">E-mail:</label><br>
+        <input type="text" id="email" name="email" placeholder="e.g: Hacktiv8Lecturer@hacktiv8.com"><br><br>
+        <label>Gender</label><br/>
+        <input type="radio" name="gender" value="Male">
+        <label>Male</label>
+        <input type="radio" name="gender" value="Female">
+        <label>Female</label><br><br>
+        <button type="submit">Save</button>
+        <a href="/lecturer">Cancel</a>
+    </form> 
+    <% errors.forEach(el => { %>
+        <p style="color: red;"><%= el %></p>
+    <% }) %>
+    <%- include("partials/footer.ejs")%></br>

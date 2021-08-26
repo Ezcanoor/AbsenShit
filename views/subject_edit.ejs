@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs", { title: "Edit Subject"}) %>
+</head>
+<body>
+    <h1>Edit Subject</h1>
+    <form method="POST" action="/subject/edit/<%=data.id%>"> 
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value="<%=data.name%>"><br><br>
+        <label for="day">Day:</label><br>
+        <input type="text" id="day" name="day" value="<%=data.day%>"><br><br>
+        <label for="time">Time:</label><br>
+        <input type="text" id="time" name="time" value="<%=data.time%>"><br><br>
+        <label for="lecturerId">Lecturer:</label><br>
+        <select name="lecturerId" id="lecturerId">
+            <option selected disabled>--please select--</option>
+            <% lecturer.forEach((lecturer)=> { %>
+                <option value="<%=lecturer.id%>" <%= lecturer.id === data.lecturerId ? "selected" : "" %>><%=lecturer.name%></option>
+           <% })%>
+        </select><br><br>
+        <button type="submit">Save</button>
+        <a href="/subject">Cancel</a>
+    </form> 
+    <% errors.forEach(el => { %>
+        <p style="color: red;"><%= el %></p>
+    <% }) %>
+    <%- include("partials/footer.ejs")%></br>
