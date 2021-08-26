@@ -11,13 +11,13 @@ const lecturerRouter = require('./lecturer.js')
 router.get('/login', AuthController.index)
 router.post('/login', AuthController.login)
 authenticatedrouter.use('/',router)
-authenticatedrouter.use(function(req, res, next) {
-  if (req.session.isLogin === true) {
-    next()
-    return
-  } 
-  res.redirect('/login')
-})
+// authenticatedrouter.use(function(req, res, next) {
+//   if (req.session.isLogin === true) {
+//     next()
+//     return
+//   } 
+//   res.redirect('/login')
+// })
 
 authenticatedrouter.get('/logout', AuthController.logout)
 authenticatedrouter.get('/', (req, res)=> {

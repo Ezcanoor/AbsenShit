@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>List Student</h1>
+  <a href="/students/add">Add Students</a>
+  <table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Addres</th>
+        <th>Birth Date</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Major</th>
+        <th>Action</th>
+    </tr>
+    <% student.forEach(el => { %>
+        <tr>
+            <td>
+              <%= generate(el.gender, el.name) %> 
+            </td>
+            <td>
+              <%= el.address %> 
+            </td>
+            <td>
+              <%= el.birth_date %> 
+            </td>
+            <td>
+              <%= el.gender %> 
+            </td>
+            <td>
+              <%= el.email %> 
+            </td>
+            <td>
+              <%= el.major %> 
+            </td>
+            <td>
+                <a href="/students/edit/<%= el.id %>">Edit</a>
+                <a href="/students/delete/<%= el.id %>">Delete</a>
+            </td>
+        </tr>
+    <% }) %> 
+</table>
+</body>
+</html>

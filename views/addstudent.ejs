@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <h1>add student</h1>
+    <form action="/students/add" method="POST"  >
+      <label for="name">Name</label><br>
+      <input type="text" name="name" required><br>
+      <label for="Address">Address</label><br>
+      <input type="text" name="address" required><br>
+      <label for="birth_date">Birth Date  </label><br>
+      <input type="date" name="birth_date" required><br>
+      <label for="gender">Gender</label><br>
+      <input type="text" name="gender" required><br>
+      <label for="email">Email</label><br>
+      <input type="text" name="email" required><br>
+      <label for="major">Major</label><br>
+      <input type="text" name="major" required><br>
+      <button type="submit">Save</button>
+    </form>
+</body>
+</html>
