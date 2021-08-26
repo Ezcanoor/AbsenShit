@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Djajang Soepardi",
+    "degree": "DIII - Teknik Mesin",
+    "gender": "male",
+    "email": "djangsoe@gmail.com",
+    "username": "djangaoe",
+    "password": "123456",
+    "isLogin": false
+  },
+  {
+   "name": "Dadang jatmik",
+   "degree": "DIII - Teknik Mesin",
+   "gender": "male",
+   "email" : "djatmik@gmail.com",
+   "username": "djatmik",
+   "password": "123456",
+   "isLogin": false
+ },
+ {
+  "name": "Nienieng saodah",
+  "degree": "DIV - Ilmu Perbankan",
+  "gender": "female",
+  "email" : "niengsaw@gmail.com",
+  "username": "ningsaw",
+  "password": "123456",
+  "isLogin": false
+}
+]
