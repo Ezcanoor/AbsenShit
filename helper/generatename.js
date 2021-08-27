@@ -1,6 +1,6 @@
 
 const generatename = (gender, name) => {
-  if(gender === 'male'){
+  if(gender.toLowerCase() === 'male'){
     return `Tn. ${name}`
   } else {
     return `Ny. ${name}`

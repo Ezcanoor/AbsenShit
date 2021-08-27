@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       Subject.belongsTo(models.Lecturer, {
         foreignKey: 'lecturerId'
       })
+      Subject.belongsToMany(models.Student, {through:'StudentSubject', foreignKey: 'subjectId'})
     }
   };
   Subject.init({

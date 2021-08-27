@@ -1,5 +1,6 @@
 const {Student} = require('../models')
 const helper = require('../helper/generatename')
+const date = require('../helper/date')
 class StudentController{
   static list(req, res){
     Student.findAll()
@@ -29,11 +30,11 @@ class StudentController{
   static editStudentForm(req, res){
     Student.findOne({
       where:{
-        id: +req.params.id
+        id: req.params.id
       }
     })
      .then(data => {
-       res.render('editstudent', {student: data})
+       res.render('editstudent', {student: data, date})
      })
      .catch(err => {
        res.send(err)
@@ -44,7 +45,7 @@ class StudentController{
   static editStudent(req, res){
     Student.update(req.body,{
         where: {
-          id: +req.params.id
+          id: req.params.id
         }
       }
     )
