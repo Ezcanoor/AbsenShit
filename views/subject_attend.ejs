@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs", { title: "Attend Subject"}) %>
+</head>
+<body>
+    <h1><%= subjectData.name%></h1>
+    <a href="/">Return to Home</a>
+    <a href="/subject">Return to Subjects</a>
+    <h2>Attend Subject</h2>
+    <form method="POST" action="/subject/attend/<%= subjectData.id%>"> 
+        <label for="name">Add Student:</label><br>
+        <select name="studentId" id="studentId">
+            <option selected disabled>--please select--</option>
+            <% studentData.forEach(student=> { %>
+                <option value="<%=student.id%>"><%=student.name%></option>
+           <% })%>
+        </select><br><br>
+        <button type="submit">Save</button>
+        <a href="/subject">Cancel</a>
+    </form> 
+    <table border=1>
+        <tr>
+            <th>Attendees</th>
+        </tr>
+        <tbody>
+            <% subjectData.Students.forEach(el => { %>
+                <tr>
+                    <td><%= el.name%></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% errors.forEach(el => { %>
+        <p style="color: red;"><%= el %></p>
+    <% }) %>
+    <%- include("partials/footer.ejs")%>

@@ -14,4 +14,8 @@ SubjectRouter.post('/edit/:id', Controller.postEditSubject)
 
 SubjectRouter.get('/delete/:id', Controller.deleteSubject)
 
+SubjectRouter.get('/attend/:id', Controller.getAttendSubject)
+
+SubjectRouter.post('/attend/:id', Controller.postAttendSubject)
+
 module.exports=SubjectRouter

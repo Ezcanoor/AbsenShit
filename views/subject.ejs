@@ -1,5 +1,6 @@
 <%- include("partials/header.ejs", { title: "Subject"}) %>
 </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <body>
     <a href="/subject/add">Add Subject</a>
     <table border="1">
@@ -20,9 +21,37 @@
                     <td>
                         <a href="/subject/edit/<%=subject.id%>">Edit</a>
                         <a href="/subject/delete/<%=subject.id%>">Delete</a>
+                        <a href="/subject/attend/<%=subject.id%>">Attend</a>
                     </td>
                 </tr>
             <% }) %>
         </tbody>
     </table>
+    <p id="subjectName" style="display:none"><%= subjectName %></p>
+    <p id="attendRate" style="display:none"><%= attendRate %></p>
+    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<script>
+var xValues = document.getElementById("subjectName").innerText.split(',')
+var yValues = document.getElementById("attendRate").innerText.split(',')
+console.log(xValues);
+var barColors = ["red", "green","blue","orange","brown","black","yellow"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Attendance rate per subject in percent"
+    }
+  }
+});
+</script>
     <%- include("partials/footer.ejs")%></br>

@@ -1,4 +1,4 @@
-const {Subject , Lecturer} = require('../models/index')
+const {Subject , Lecturer, Student, StudentSubject} = require('../models/index')
 const date = require('../helper/date.js')
 
 class Controller{
@@ -70,9 +70,22 @@ class Controller{
     }
 
     static showSubject(req,res){
-        Subject.findAll()
+        let students = {}
+        Student.findAll()
         .then(data => {
-            res.render('subject',{data})
+            students = data
+            return Subject.findAll({include:Student})
+        })
+        .then(result => {
+            let attendRate = []
+            for (let i = 0; i < students.length; i++){
+                attendRate.push(Math.ceil(result[i].Students.length / students.length * 100))
+            }
+            let subjectName = []
+            for (let j = 0; j < result.length; j++){
+                subjectName.push(result[j].name)
+            }
+            res.render('subject',{data:result, students, attendRate, subjectName})
         })
         .catch(err => {
             res.send(err)
@@ -152,6 +165,39 @@ class Controller{
             res.redirect('/subject')
         })
         .catch(err => console.log(err))
+    }
+    static getAttendSubject(req,res){
+        let studentData = {}
+        let subjectData = {}
+        let errors= []
+        Subject.findByPk(req.params.id, {include: Student})
+        .then(data => {
+            subjectData = data
+            return Student.findAll()
+        })
+        .then (result => {
+            studentData = result
+            if (req.query.errors){
+                errors = req.query.errors.split(',')
+            }
+            res.render(`subject_attend`, {subjectData, studentData, errors})
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    static postAttendSubject(req,res){
+        StudentSubject.create({
+            studentId: req.body.studentId,
+            subjectId: req.params.id
+        })
+        .then (data => {
+            res.redirect('/subject/attend/'+req.params.id)
+        })
+        .catch(err => {
+            res.redirect('/subject/attend/'+req.params.id+`?errors=${err}`)
+        })
     }
 }
 
